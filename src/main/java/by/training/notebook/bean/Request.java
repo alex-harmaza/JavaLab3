@@ -11,12 +11,19 @@ public class Request {
 
 
     public Request(CommandEnum commandName){
-        this.commandName = commandName;
+        setCommandName(commandName);
     }
 
 
     public CommandEnum getCommandName() {
         return commandName;
+    }
+
+    public void setCommandName(CommandEnum commandName) {
+        if (commandName == null){
+            throw new IllegalArgumentException("CommandName is null");
+        }
+        this.commandName = commandName;
     }
 
     @Override

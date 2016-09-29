@@ -18,7 +18,7 @@ public abstract class View {
         if (response.getClass() != ResponseWithMessage.class){
             throw new ViewException("Incorrect response type");
         }
-        System.out.println(((!response.isStatus()) ? "Error" : "Result: ")
+        System.out.println(((!response.isStatus()) ? "Error: " : "Result: ")
                 + ((ResponseWithMessage) response).getMessage());
     }
 }

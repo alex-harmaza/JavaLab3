@@ -23,6 +23,9 @@ public class RequestWithCreatedDate extends Request {
     }
 
     public void setCreatedDate(Date createdDate) {
+        if (createdDate == null){
+            throw new IllegalArgumentException("CreatedDate is null");
+        }
         this.createdDate = createdDate;
     }
 

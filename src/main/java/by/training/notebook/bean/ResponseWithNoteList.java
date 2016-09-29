@@ -14,7 +14,7 @@ public class ResponseWithNoteList extends Response {
 
     public ResponseWithNoteList(boolean status, List<Note> notes){
         super(status);
-        this.notes = notes;
+        setNotes(notes);
     }
 
 
@@ -23,6 +23,9 @@ public class ResponseWithNoteList extends Response {
     }
 
     public void setNotes(List<Note> notes) {
+        if (notes == null){
+            throw new IllegalArgumentException("Notes is null");
+        }
         this.notes = notes;
     }
 }
