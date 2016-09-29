@@ -19,11 +19,12 @@ public class CommandFactory {
         commandMap = new HashMap<>();
         commandMap.put(CommandEnum.CREATE_NEW_NOTEBOOK, new CreateNewNotebook());
         commandMap.put(CommandEnum.ADD_NOTE, new AddNoteToNoteBook());
-        commandMap.put(CommandEnum.SEARCH_BY_NOTE_CONTENT, new SearchNotesByContent());
-        commandMap.put(CommandEnum.SEARCH_BY_NOTE_CREATE_DATE, new SearchNotesByCreatedDate());
+        commandMap.put(CommandEnum.SEARCH_BY_CONTENT, new SearchNotesByContent());
+        commandMap.put(CommandEnum.SEARCH_BY_DATE, new SearchNotesByCreatedDate());
         commandMap.put(CommandEnum.SHOW_NOTES, new ShowNotesInNoteBook());
-        commandMap.put(CommandEnum.WRITE_IN_FILE, new WriteNoteBookInFile());
-        commandMap.put(CommandEnum.LOAD_FROM_FILE, new LoadNoteBookFromFile());
+        commandMap.put(CommandEnum.WRITE, new WriteNoteBookInFile());
+        commandMap.put(CommandEnum.LOAD, new LoadNoteBookFromFile());
+        commandMap.put(CommandEnum.HELP, new ShowHelp());
     }
 
 

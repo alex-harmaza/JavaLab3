@@ -16,10 +16,4 @@ public class CreateNewNoteBook extends View {
     public Request createRequest(Scanner scanner) throws ViewException {
         return new Request(CommandEnum.CREATE_NEW_NOTEBOOK);
     }
-
-    @Override
-    public void showResponse(Response response) throws ViewException {
-        super.showResponse(response);
-    }
-
 }

@@ -12,7 +12,6 @@ import org.junit.*;
 
 import java.io.*;
 import java.util.Date;
-import java.util.Properties;
 
 /**
  * Created by Aliaksandr_Harmaza on 9/29/2016.
@@ -26,7 +25,7 @@ public class WriteNoteBookInFileCommandTest extends CommandTest {
 
     @Test(expected = CommandException.class)
     public void checkOnIncorrectRequestType() throws CommandException {
-        getCommand().execute(new RequestWithCreatedDate(CommandEnum.WRITE_IN_FILE, new Date()));
+        getCommand().execute(new RequestWithCreatedDate(CommandEnum.WRITE, new Date()));
     }
 
     @Test
@@ -34,7 +33,7 @@ public class WriteNoteBookInFileCommandTest extends CommandTest {
         Note note = new Note(new Date(0), "test");
         NoteBookProvider.getInstance().getNoteBook().add(note);
 
-        getCommand().execute(new Request(CommandEnum.WRITE_IN_FILE));
+        getCommand().execute(new Request(CommandEnum.WRITE));
 
         String readLine = null;
         try (BufferedReader reader = new BufferedReader(new FileReader(ConfigProperties

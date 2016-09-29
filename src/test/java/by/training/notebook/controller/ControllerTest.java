@@ -4,7 +4,6 @@ import by.training.notebook.CommandEnum;
 import by.training.notebook.bean.*;
 import by.training.notebook.source.NoteBookProvider;
 import org.junit.*;
-import org.junit.internal.runners.statements.FailOnTimeout;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
@@ -52,42 +51,42 @@ public class ControllerTest extends Assert {
                         ResponseWithMessage.class
                 },
                 {
-                        new Request(CommandEnum.WRITE_IN_FILE),
+                        new Request(CommandEnum.WRITE),
                         true,
                         ResponseWithMessage.class
                 },
                 {
-                        new RequestWithNoteContent(CommandEnum.WRITE_IN_FILE, "test"),
+                        new RequestWithNoteContent(CommandEnum.WRITE, "test"),
                         false,
                         ResponseWithMessage.class
                 },
                 {
-                        new Request(CommandEnum.LOAD_FROM_FILE),
+                        new Request(CommandEnum.LOAD),
                         true,
                         ResponseWithMessage.class
                 },
                 {
-                        new RequestWithCreatedDate(CommandEnum.LOAD_FROM_FILE, new Date()),
+                        new RequestWithCreatedDate(CommandEnum.LOAD, new Date()),
                         false,
                         ResponseWithMessage.class
                 },
                 {
-                        new RequestWithNoteContent(CommandEnum.SEARCH_BY_NOTE_CONTENT, "test"),
+                        new RequestWithNoteContent(CommandEnum.SEARCH_BY_CONTENT, "test"),
                         true,
                         ResponseWithNoteList.class
                 },
                 {
-                        new RequestWithCreatedDate(CommandEnum.SEARCH_BY_NOTE_CONTENT, new Date()),
+                        new RequestWithCreatedDate(CommandEnum.SEARCH_BY_CONTENT, new Date()),
                         false,
                         ResponseWithMessage.class
                 },
                 {
-                        new RequestWithCreatedDate(CommandEnum.SEARCH_BY_NOTE_CREATE_DATE, new Date()),
+                        new RequestWithCreatedDate(CommandEnum.SEARCH_BY_DATE, new Date()),
                         true,
                         ResponseWithNoteList.class
                 },
                 {
-                        new RequestWithNoteContent(CommandEnum.SEARCH_BY_NOTE_CREATE_DATE, "test"),
+                        new RequestWithNoteContent(CommandEnum.SEARCH_BY_DATE, "test"),
                         false,
                         ResponseWithMessage.class
                 },
@@ -100,7 +99,17 @@ public class ControllerTest extends Assert {
                         new RequestWithCreatedDate(CommandEnum.SHOW_NOTES, new Date()),
                         false,
                         ResponseWithMessage.class
-                }
+                },
+                {
+                        new Request(CommandEnum.HELP),
+                        true,
+                        ResponseWithMessage.class
+                },
+                {
+                        new RequestWithCreatedDate(CommandEnum.HELP, new Date()),
+                        false,
+                        ResponseWithMessage.class
+                },
         });
     }
 

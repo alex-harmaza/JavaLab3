@@ -16,12 +16,14 @@ public class ViewFactory {
     public ViewFactory() {
         this.viewMap = new HashMap<>();
         viewMap.put(CommandEnum.CREATE_NEW_NOTEBOOK, new CreateNewNoteBook());
-        viewMap.put(CommandEnum.ADD_NOTE, new AddNoteToNoteBook());
-        viewMap.put(CommandEnum.SEARCH_BY_NOTE_CONTENT, new SearchNotesByContent());
-        viewMap.put(CommandEnum.SEARCH_BY_NOTE_CREATE_DATE, new SearchNotesByCreatedDate());
+        viewMap.put(CommandEnum.ADD_NOTE, new AddNoteToNoteBookView());
+        viewMap.put(CommandEnum.SEARCH_BY_CONTENT, new SearchNotesByContent());
+        viewMap.put(CommandEnum.SEARCH_BY_DATE, new SearchNotesByCreatedDate());
         viewMap.put(CommandEnum.SHOW_NOTES, new ShowNotesInNoteBook());
-        viewMap.put(CommandEnum.WRITE_IN_FILE, new WriteNoteBookInFile());
-        viewMap.put(CommandEnum.LOAD_FROM_FILE, new LoadNoteBookFromFile());
+        viewMap.put(CommandEnum.WRITE, new WriteNoteBookInFile());
+        viewMap.put(CommandEnum.LOAD, new LoadNoteBookFromFile());
+        viewMap.put(CommandEnum.HELP, new ShowHelp());
+        viewMap.put(CommandEnum.EXIT, new CloseProgram());
     }
 
 

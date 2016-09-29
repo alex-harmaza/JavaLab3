@@ -14,12 +14,6 @@ public class WriteNoteBookInFile extends View {
 
     @Override
     public Request createRequest(Scanner scanner) throws ViewException {
-        return new Request(CommandEnum.WRITE_IN_FILE);
+        return new Request(CommandEnum.WRITE);
     }
-
-    @Override
-    public void showResponse(Response response) throws ViewException {
-        super.showResponse(response);
-    }
-
 }

@@ -22,7 +22,7 @@ public class SearchNotesByCreatedDate extends View {
         try {
             DateFormat format = new SimpleDateFormat("d.M.y", Locale.ENGLISH);
             System.out.print("Enter the date [day.month.year]: ");
-            request = new RequestWithCreatedDate(CommandEnum.SEARCH_BY_NOTE_CREATE_DATE,
+            request = new RequestWithCreatedDate(CommandEnum.SEARCH_BY_DATE,
                     format.parse(scanner.nextLine()));
         }
         catch (ParseException ex){

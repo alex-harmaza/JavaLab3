@@ -6,9 +6,6 @@ import by.training.notebook.bean.entity.Note;
 import by.training.notebook.command.impl.SearchNotesByCreatedDate;
 import by.training.notebook.exception.CommandException;
 import by.training.notebook.source.NoteBookProvider;
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -26,7 +23,7 @@ public class SearchNotesByCreatedDateCommandTest extends CommandTest{
 
     @Test(expected = CommandException.class)
     public void checkOnIncorrectRequestType() throws CommandException {
-        getCommand().execute(new Request(CommandEnum.SEARCH_BY_NOTE_CREATE_DATE));
+        getCommand().execute(new Request(CommandEnum.SEARCH_BY_DATE));
     }
 
     @Test
@@ -35,7 +32,7 @@ public class SearchNotesByCreatedDateCommandTest extends CommandTest{
         NoteBookProvider.getInstance().getNoteBook().add(note);
 
         Response response = getCommand()
-                .execute(new RequestWithCreatedDate(CommandEnum.SEARCH_BY_NOTE_CREATE_DATE, new Date(0)));
+                .execute(new RequestWithCreatedDate(CommandEnum.SEARCH_BY_DATE, new Date(0)));
 
         assertEquals("Incorrect response status", response.isStatus(), true);
         assertEquals("Incorrect response type", response.getClass(), ResponseWithNoteList.class);

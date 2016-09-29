@@ -11,7 +11,7 @@ import java.util.Scanner;
 /**
  * Created by Aliaksandr_Harmaza on 9/28/2016.
  */
-public class AddNoteToNoteBook extends View {
+public class AddNoteToNoteBookView extends View {
 
     @Override
     public Request createRequest(Scanner scanner) throws ViewException {
@@ -24,10 +24,5 @@ public class AddNoteToNoteBook extends View {
             throw new ViewException(ex.getMessage(), ex);
         }
         return request;
-    }
-
-    @Override
-    public void showResponse(Response response) throws ViewException {
-        super.showResponse(response);
     }
 }

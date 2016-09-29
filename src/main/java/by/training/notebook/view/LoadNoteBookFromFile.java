@@ -14,12 +14,6 @@ public class LoadNoteBookFromFile extends View {
 
     @Override
     public Request createRequest(Scanner scanner) throws ViewException {
-        return new Request(CommandEnum.LOAD_FROM_FILE);
-    }
-
-
-    @Override
-    public void showResponse(Response response) throws ViewException {
-        super.showResponse(response);
+        return new Request(CommandEnum.LOAD);
     }
 }

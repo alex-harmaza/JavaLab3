@@ -6,9 +6,6 @@ import by.training.notebook.bean.entity.Note;
 import by.training.notebook.command.impl.SearchNotesByContent;
 import by.training.notebook.exception.CommandException;
 import by.training.notebook.source.NoteBookProvider;
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -26,7 +23,7 @@ public class SearchNotesByContentCommandTest extends CommandTest {
 
     @Test(expected = CommandException.class)
     public void checkOnIncorrectRequestType() throws CommandException {
-        getCommand().execute(new Request(CommandEnum.SEARCH_BY_NOTE_CONTENT));
+        getCommand().execute(new Request(CommandEnum.SEARCH_BY_CONTENT));
     }
 
     @Test
@@ -35,7 +32,7 @@ public class SearchNotesByContentCommandTest extends CommandTest {
         NoteBookProvider.getInstance().getNoteBook().add(note);
 
         Response response = getCommand()
-                .execute(new RequestWithNoteContent(CommandEnum.SEARCH_BY_NOTE_CONTENT, "test"));
+                .execute(new RequestWithNoteContent(CommandEnum.SEARCH_BY_CONTENT, "test"));
 
         assertEquals("Incorrect response status", response.isStatus(), true);
         assertEquals("Incorrect response type", response.getClass(), ResponseWithNoteList.class);
