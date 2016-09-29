@@ -1,5 +1,6 @@
 package by.training.notebook.command.impl;
 
+import by.training.notebook.ConfigProperties;
 import by.training.notebook.bean.Request;
 import by.training.notebook.bean.Response;
 import by.training.notebook.bean.ResponseWithMessage;
@@ -24,26 +25,16 @@ public class LoadNoteBookFromFile implements ICommand {
             throw new CommandException("The request does not Request the class");
         }
 
-        try (InputStream configStream = new FileInputStream(this.getClass().getClassLoader()
-                .getResource("config.properties").getPath())){
-            Properties properties = new Properties();
-            properties.load(configStream);
+        try (BufferedReader reader = new BufferedReader(new FileReader(ConfigProperties.getInstance()
+                .getProperty("file.path")))) {
 
-            BufferedReader reader =
-                    new BufferedReader(new FileReader(properties.getProperty("file.path")));
-
-            String line;
             NoteBook noteBook = NoteBookProvider.getInstance().getNoteBook();
             noteBook.clear();
 
-            try {
-                while ((line = reader.readLine()) != null){
-                    String[] fields = line.split(";");
-                    noteBook.add(new Note(new Date(Long.valueOf(fields[0])), fields[1]));
-                }
-            }
-            finally {
-                reader.close();
+            String line;
+            while ((line = reader.readLine()) != null){
+                String[] fields = line.split(";");
+                noteBook.add(new Note(new Date(Long.valueOf(fields[0])), fields[1]));
             }
         }
         catch (IllegalArgumentException | IOException ex){

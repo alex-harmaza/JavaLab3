@@ -1,5 +1,6 @@
 package by.training.notebook.command.impl;
 
+import by.training.notebook.ConfigProperties;
 import by.training.notebook.bean.Request;
 import by.training.notebook.bean.Response;
 import by.training.notebook.bean.ResponseWithMessage;
@@ -21,19 +22,8 @@ public class WriteNoteBookInFile implements ICommand {
             throw new CommandException("The request does not Request the class");
         }
 
-        try (InputStream configStream = new FileInputStream(this.getClass().getClassLoader()
-                .getResource("config.properties").getPath())){
-            Properties properties = new Properties();
-            properties.load(configStream);
-
-            Writer writer = new FileWriter(properties.getProperty("file.path"));
-
-            try {
-                writer.write(NoteBookProvider.getInstance().getNoteBook().toCsvString());
-            }
-            finally {
-                writer.close();
-            }
+        try (Writer writer = new FileWriter(ConfigProperties.getInstance().getProperty("file.path"));) {
+            writer.write(NoteBookProvider.getInstance().getNoteBook().toCsvString());
         }
         catch (IOException ex) {
             throw new CommandException(ex.getMessage(), ex);

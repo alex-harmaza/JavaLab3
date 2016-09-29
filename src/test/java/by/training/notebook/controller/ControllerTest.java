@@ -2,7 +2,9 @@ package by.training.notebook.controller;
 
 import by.training.notebook.CommandEnum;
 import by.training.notebook.bean.*;
+import by.training.notebook.source.NoteBookProvider;
 import org.junit.*;
+import org.junit.internal.runners.statements.FailOnTimeout;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 
@@ -20,8 +22,7 @@ import java.util.Properties;
 @RunWith(Parameterized.class)
 public class ControllerTest extends Assert {
 
-    private Controller controller;
-
+    private Controller controller = new Controller();;
     private Request request;
     private boolean expectedResponseStatus;
     private Class expectedResponseClass;
@@ -111,9 +112,9 @@ public class ControllerTest extends Assert {
         properties.load(configFileStream);
 
         File file = new File(properties.getProperty("file.path"));
-        if (file.exists()){
-            file.delete();
-        }
+        file.delete();
+
+        NoteBookProvider.getInstance().getNoteBook().clear();
     }
 
 
@@ -121,14 +122,13 @@ public class ControllerTest extends Assert {
         this.request = request;
         this.expectedResponseStatus = expectedResponseStatus;
         this.expectedResponseClass = expectedResponseClass;
-        controller = new Controller();
     }
 
 
     @Test
     public void execute(){
         Response response = controller.doRequest(request);
-        assertEquals("", expectedResponseStatus, response.isStatus());
-        assertEquals("", expectedResponseClass, response.getClass());
+        assertEquals("Not expected response status", expectedResponseStatus, response.isStatus());
+        assertEquals("Not expected response class", expectedResponseClass, response.getClass());
     }
 }

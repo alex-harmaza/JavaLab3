@@ -1,6 +1,7 @@
 package by.training.notebook.command;
 
 import by.training.notebook.CommandEnum;
+import by.training.notebook.ConfigProperties;
 import by.training.notebook.bean.Request;
 import by.training.notebook.bean.RequestWithCreatedDate;
 import by.training.notebook.bean.entity.Note;
@@ -16,25 +17,16 @@ import java.util.Properties;
 /**
  * Created by Aliaksandr_Harmaza on 9/29/2016.
  */
-public class WriteNoteBookInFileCommandTest extends Assert {
+public class WriteNoteBookInFileCommandTest extends CommandTest {
 
-    private ICommand command = new WriteNoteBookInFile();
-
-
-    @Before @After
-    public void beforeAfterTest(){
-        NoteBookProvider.getInstance().getNoteBook().clear();
-    }
-
-    @BeforeClass @AfterClass
-    public static void deleteSourceFile() throws IOException {
-        new File(getSourceFilePath()).delete();
+    public WriteNoteBookInFileCommandTest(){
+        super(new WriteNoteBookInFile());
     }
 
 
     @Test(expected = CommandException.class)
     public void checkOnIncorrectRequestType() throws CommandException {
-        command.execute(new RequestWithCreatedDate(CommandEnum.WRITE_IN_FILE, new Date()));
+        getCommand().execute(new RequestWithCreatedDate(CommandEnum.WRITE_IN_FILE, new Date()));
     }
 
     @Test
@@ -42,10 +34,11 @@ public class WriteNoteBookInFileCommandTest extends Assert {
         Note note = new Note(new Date(0), "test");
         NoteBookProvider.getInstance().getNoteBook().add(note);
 
-        command.execute(new Request(CommandEnum.WRITE_IN_FILE));
+        getCommand().execute(new Request(CommandEnum.WRITE_IN_FILE));
 
         String readLine = null;
-        try (BufferedReader reader = new BufferedReader(new FileReader(getSourceFilePath()))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(ConfigProperties
+                .getInstance().getProperty("file.path")))) {
             readLine = reader.readLine();
         }
         catch (FileNotFoundException ex){
@@ -56,11 +49,8 @@ public class WriteNoteBookInFileCommandTest extends Assert {
     }
 
 
-    private static String getSourceFilePath() throws IOException {
-        InputStream configFileStream = LoadNoteBookFromFileCommandTest.class
-                .getClassLoader().getResourceAsStream("config.properties");
-        Properties configProperties = new Properties();
-        configProperties.load(configFileStream);
-        return configProperties.getProperty("file.path");
+    @Before @After
+    public void deleteSourceFile() throws IOException {
+        new File(ConfigProperties.getInstance().getProperty("file.path")).delete();
     }
 }

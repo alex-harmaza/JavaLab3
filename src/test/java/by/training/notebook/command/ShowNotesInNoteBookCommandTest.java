@@ -17,20 +17,16 @@ import java.util.Date;
 /**
  * Created by Aliaksandr_Harmaza on 9/29/2016.
  */
-public class ShowNotesInNoteBookCommandTest extends Assert {
+public class ShowNotesInNoteBookCommandTest extends CommandTest {
 
-    private ICommand command = new ShowNotesInNoteBook();
-
-
-    @Before @After
-    public void beforeAfterTest(){
-        NoteBookProvider.getInstance().getNoteBook().clear();
+    public ShowNotesInNoteBookCommandTest(){
+        super(new ShowNotesInNoteBook());
     }
 
 
     @Test(expected = CommandException.class)
     public void checkOnIncorrectRequestType() throws CommandException {
-        command.execute(new RequestWithCreatedDate(CommandEnum.SHOW_NOTES, new Date()));
+        getCommand().execute(new RequestWithCreatedDate(CommandEnum.SHOW_NOTES, new Date()));
     }
 
     @Test
@@ -38,7 +34,7 @@ public class ShowNotesInNoteBookCommandTest extends Assert {
         Note note = new Note(new Date(0), "test");
         NoteBookProvider.getInstance().getNoteBook().add(note);
 
-        Response response = command.execute(new Request(CommandEnum.SHOW_NOTES));
+        Response response = getCommand().execute(new Request(CommandEnum.SHOW_NOTES));
 
         assertEquals("Incorrect response status", response.isStatus(), true);
         assertEquals("Incorrect response type", response.getClass(), ResponseWithNoteList.class);

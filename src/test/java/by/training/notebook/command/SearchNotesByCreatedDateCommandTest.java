@@ -17,28 +17,24 @@ import java.util.Date;
 /**
  * Created by Aliaksandr_Harmaza on 9/29/2016.
  */
-public class SearchNotesByCreatedDateCommandTest extends Assert {
+public class SearchNotesByCreatedDateCommandTest extends CommandTest{
 
-    private ICommand command = new SearchNotesByCreatedDate();
-
-
-    @Before @After
-    public void beforeAfterTest(){
-        NoteBookProvider.getInstance().getNoteBook().clear();
+    public SearchNotesByCreatedDateCommandTest(){
+        super(new SearchNotesByCreatedDate());
     }
+
 
     @Test(expected = CommandException.class)
     public void checkOnIncorrectRequestType() throws CommandException {
-        command.execute(new Request(CommandEnum.SEARCH_BY_NOTE_CREATE_DATE));
+        getCommand().execute(new Request(CommandEnum.SEARCH_BY_NOTE_CREATE_DATE));
     }
-
 
     @Test
     public void checkResponse() throws CommandException, IOException {
         Note note = new Note(new Date(0), "test");
         NoteBookProvider.getInstance().getNoteBook().add(note);
 
-        Response response = command
+        Response response = getCommand()
                 .execute(new RequestWithCreatedDate(CommandEnum.SEARCH_BY_NOTE_CREATE_DATE, new Date(0)));
 
         assertEquals("Incorrect response status", response.isStatus(), true);
