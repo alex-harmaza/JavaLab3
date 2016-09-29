@@ -25,4 +25,11 @@ public class RequestWithCreatedDate extends Request {
     public void setCreatedDate(Date createdDate) {
         this.createdDate = createdDate;
     }
+
+    @Override
+    public String toString() {
+        return new StringBuilder().append("RequestWithCreatedDate{commandName=")
+                .append(getCommandName()).append(";createdDate=")
+                .append(getCreatedDate()).append("}").toString();
+    }
 }

@@ -25,4 +25,12 @@ public class RequestWithNoteContent extends Request {
         }
         this.content = content;
     }
+
+
+    @Override
+    public String toString() {
+        return new StringBuilder().append("RequestWithNoteContent{commandName=")
+                .append(getCommandName()).append(";content= ")
+                .append(content).append("}").toString();
+    }
 }

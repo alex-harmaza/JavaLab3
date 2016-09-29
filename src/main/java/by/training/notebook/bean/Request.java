@@ -18,4 +18,10 @@ public class Request {
     public CommandEnum getCommandName() {
         return commandName;
     }
+
+    @Override
+    public String toString() {
+        return new StringBuilder().append("Request{commandName=")
+                .append(commandName).append("}").toString();
+    }
 }
