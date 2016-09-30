@@ -33,10 +33,10 @@ public class Note {
     }
 
     public void setData(String data) {
-        if (data == null || data.isEmpty()){
+        if (data == null || data.trim().isEmpty()){
             throw new IllegalArgumentException("Incorrect data");
         }
-        this.data = data;
+        this.data = data.trim();
     }
 
     @Override

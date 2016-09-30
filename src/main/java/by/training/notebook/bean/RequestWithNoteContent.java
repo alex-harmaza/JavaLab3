@@ -20,10 +20,10 @@ public class RequestWithNoteContent extends Request {
     }
 
     public void setContent(String content) {
-        if (content == null || content.isEmpty()){
+        if (content == null || content.trim().isEmpty()){
             throw new IllegalArgumentException("Incorrect content");
         }
-        this.content = content;
+        this.content = content.trim();
     }
 
 

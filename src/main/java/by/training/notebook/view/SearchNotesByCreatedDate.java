@@ -3,7 +3,7 @@ package by.training.notebook.view;
 import by.training.notebook.CommandEnum;
 import by.training.notebook.bean.*;
 import by.training.notebook.bean.entity.Note;
-import by.training.notebook.exception.ViewException;
+import by.training.notebook.view.exception.ViewException;
 
 import java.text.DateFormat;
 import java.text.ParseException;

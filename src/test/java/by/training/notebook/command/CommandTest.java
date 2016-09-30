@@ -1,6 +1,6 @@
 package by.training.notebook.command;
 
-import by.training.notebook.exception.CommandException;
+import by.training.notebook.command.exception.CommandException;
 import by.training.notebook.source.NoteBookProvider;
 import org.junit.After;
 import org.junit.Assert;

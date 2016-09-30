@@ -1,4 +1,4 @@
-package by.training.notebook.exception;
+package by.training.notebook.view.exception;
 
 /**
  * Created by Aliaksandr_Harmaza on 9/28/2016.

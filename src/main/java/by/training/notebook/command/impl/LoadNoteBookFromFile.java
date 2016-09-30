@@ -1,18 +1,17 @@
 package by.training.notebook.command.impl;
 
-import by.training.notebook.ConfigProperties;
+import by.training.notebook.source.ConfigProvider;
 import by.training.notebook.bean.Request;
 import by.training.notebook.bean.Response;
 import by.training.notebook.bean.ResponseWithMessage;
 import by.training.notebook.bean.entity.Note;
 import by.training.notebook.bean.entity.NoteBook;
 import by.training.notebook.command.ICommand;
-import by.training.notebook.exception.CommandException;
+import by.training.notebook.command.exception.CommandException;
 import by.training.notebook.source.NoteBookProvider;
 
 import java.io.*;
 import java.util.Date;
-import java.util.Properties;
 
 /**
  * Created by Aliaksandr_Harmaza on 9/28/2016.
@@ -25,7 +24,7 @@ public class LoadNoteBookFromFile implements ICommand {
             throw new CommandException("The request does not Request the class");
         }
 
-        try (BufferedReader reader = new BufferedReader(new FileReader(ConfigProperties.getInstance()
+        try (BufferedReader reader = new BufferedReader(new FileReader(ConfigProvider.getInstance()
                 .getProperty("file.path")))) {
 
             NoteBook noteBook = NoteBookProvider.getInstance().getNoteBook();

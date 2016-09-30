@@ -2,7 +2,7 @@ package by.training.notebook.command;
 
 import by.training.notebook.bean.Request;
 import by.training.notebook.bean.Response;
-import by.training.notebook.exception.CommandException;
+import by.training.notebook.command.exception.CommandException;
 
 /**
  * Created by Aliaksandr_Harmaza on 9/27/2016.

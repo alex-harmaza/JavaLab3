@@ -3,7 +3,7 @@ package by.training.notebook.view;
 import by.training.notebook.CommandEnum;
 import by.training.notebook.bean.Request;
 import by.training.notebook.bean.Response;
-import by.training.notebook.exception.ViewException;
+import by.training.notebook.view.exception.ViewException;
 
 import java.util.Scanner;
 

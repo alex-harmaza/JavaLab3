@@ -3,7 +3,7 @@ package by.training.notebook.command.impl;
 import by.training.notebook.bean.*;
 import by.training.notebook.bean.entity.Note;
 import by.training.notebook.command.ICommand;
-import by.training.notebook.exception.CommandException;
+import by.training.notebook.command.exception.CommandException;
 import by.training.notebook.source.NoteBookProvider;
 
 import java.util.ArrayList;

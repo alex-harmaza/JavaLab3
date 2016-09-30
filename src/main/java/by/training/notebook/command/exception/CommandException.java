@@ -1,4 +1,4 @@
-package by.training.notebook.exception;
+package by.training.notebook.command.exception;
 
 /**
  * Created by Aliaksandr_Harmaza on 9/27/2016.

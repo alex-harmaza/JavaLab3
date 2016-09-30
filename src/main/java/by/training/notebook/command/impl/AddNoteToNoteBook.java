@@ -6,13 +6,10 @@ import by.training.notebook.bean.Response;
 import by.training.notebook.bean.ResponseWithMessage;
 import by.training.notebook.bean.entity.Note;
 import by.training.notebook.command.ICommand;
-import by.training.notebook.exception.CommandException;
+import by.training.notebook.command.exception.CommandException;
 import by.training.notebook.source.NoteBookProvider;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
-import java.util.List;
 
 /**
  * Created by Aliaksandr_Harmaza on 9/27/2016.

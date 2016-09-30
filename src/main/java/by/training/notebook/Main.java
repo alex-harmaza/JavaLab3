@@ -3,10 +3,9 @@ package by.training.notebook;
 import by.training.notebook.bean.Request;
 import by.training.notebook.bean.Response;
 import by.training.notebook.controller.Controller;
-import by.training.notebook.exception.ExitViewException;
-import by.training.notebook.exception.ViewException;
+import by.training.notebook.view.exception.ViewException;
 import by.training.notebook.view.View;
-import by.training.notebook.view.ViewFactory;
+import by.training.notebook.view.factory.ViewFactory;
 
 import java.util.Scanner;
 
@@ -25,7 +24,8 @@ public class Main {
             System.out.println("\n=============================");
             System.out.print("Enter the command: ");
             try {
-                CommandEnum command = CommandEnum.getEnum(scanner.nextLine().toUpperCase());
+                CommandEnum command = CommandEnum.getEnum(scanner.nextLine()
+                        .trim().toUpperCase());
                 View view = viewFactory.getView(command);
                 Request request = view.createRequest(scanner);
                 Response response = controller.doRequest(request);

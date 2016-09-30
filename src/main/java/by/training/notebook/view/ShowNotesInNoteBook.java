@@ -6,7 +6,7 @@ import by.training.notebook.bean.Response;
 import by.training.notebook.bean.ResponseWithMessage;
 import by.training.notebook.bean.ResponseWithNoteArray;
 import by.training.notebook.bean.entity.Note;
-import by.training.notebook.exception.ViewException;
+import by.training.notebook.view.exception.ViewException;
 
 import java.util.Scanner;
 

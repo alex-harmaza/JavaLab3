@@ -1,6 +1,7 @@
-package by.training.notebook.view;
+package by.training.notebook.view.factory;
 
 import by.training.notebook.CommandEnum;
+import by.training.notebook.view.*;
 
 import java.util.HashMap;
 import java.util.Map;

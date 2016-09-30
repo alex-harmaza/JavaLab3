@@ -3,7 +3,7 @@ package by.training.notebook.command;
 import by.training.notebook.CommandEnum;
 import by.training.notebook.bean.*;
 import by.training.notebook.command.impl.ShowHelp;
-import by.training.notebook.exception.CommandException;
+import by.training.notebook.command.exception.CommandException;
 import org.junit.Test;
 
 import java.io.IOException;

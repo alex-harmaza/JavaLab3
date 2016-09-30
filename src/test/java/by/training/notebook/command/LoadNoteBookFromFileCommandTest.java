@@ -1,10 +1,10 @@
 package by.training.notebook.command;
 
 import by.training.notebook.CommandEnum;
-import by.training.notebook.ConfigProperties;
+import by.training.notebook.source.ConfigProvider;
 import by.training.notebook.bean.*;
 import by.training.notebook.command.impl.LoadNoteBookFromFile;
-import by.training.notebook.exception.CommandException;
+import by.training.notebook.command.exception.CommandException;
 import org.junit.*;
 
 import java.io.*;
@@ -33,7 +33,7 @@ public class LoadNoteBookFromFileCommandTest extends CommandTest {
 
     @Test(expected = CommandException.class)
     public void checkOnTheNotCorrectnessOfTheDataInFile() throws IOException, CommandException {
-        FileWriter writer = new FileWriter(ConfigProperties.getInstance().getProperty("file.path"));
+        FileWriter writer = new FileWriter(ConfigProvider.getInstance().getProperty("file.path"));
         writer.write("test;test");
         writer.close();
         getCommand().execute(new Request(CommandEnum.LOAD));
@@ -42,7 +42,7 @@ public class LoadNoteBookFromFileCommandTest extends CommandTest {
     @Override
     @Test()
     public void checkResponse() throws IOException, CommandException {
-        FileWriter writer = new FileWriter(ConfigProperties.getInstance().getProperty("file.path"));
+        FileWriter writer = new FileWriter(ConfigProvider.getInstance().getProperty("file.path"));
         writer.write("0;test");
         writer.close();
 
@@ -54,6 +54,6 @@ public class LoadNoteBookFromFileCommandTest extends CommandTest {
 
     @Before @After
     public void deleteSourceFile() throws IOException {
-        new File(ConfigProperties.getInstance().getProperty("file.path")).delete();
+        new File(ConfigProvider.getInstance().getProperty("file.path")).delete();
     }
 }
