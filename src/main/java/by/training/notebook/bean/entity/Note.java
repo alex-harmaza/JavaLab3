@@ -39,6 +39,23 @@ public class Note {
         this.data = data;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Note note = (Note) o;
+
+        if (createdDate != null ? !createdDate.equals(note.createdDate) : note.createdDate != null) return false;
+        return data != null ? data.equals(note.data) : note.data == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = createdDate != null ? createdDate.hashCode() : 0;
+        result = 31 * result + (data != null ? data.hashCode() : 0);
+        return result;
+    }
 
     @Override
     public String toString() {

@@ -1,6 +1,7 @@
 package by.training.notebook;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.ObjectStreamException;
 import java.util.Properties;
 
@@ -23,8 +24,9 @@ public class ConfigProperties {
 
     private ConfigProperties() {
         properties = new Properties();
-        try {
-            properties.load(this.getClass().getClassLoader().getResourceAsStream(PROPERTY_FILE_NAME));
+        try (InputStream s = this.getClass().getClassLoader()
+                .getResourceAsStream(PROPERTY_FILE_NAME)) {
+            properties.load(s);
         }
         catch (IOException ex){
             throw new IllegalStateException(ex);
