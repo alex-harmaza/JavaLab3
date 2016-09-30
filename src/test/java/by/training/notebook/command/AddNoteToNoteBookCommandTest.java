@@ -39,7 +39,7 @@ public class AddNoteToNoteBookCommandTest extends CommandTest{
     @Test
     public void checkAddedFileInNoteBook() throws CommandException{
         getCommand().execute(new RequestWithNoteContent(CommandEnum.ADD_NOTE, "test"));
-        List<Note> notes = NoteBookProvider.getInstance().getNoteBook().getNoteList();
-        assertTrue("Added note is missing", notes.size() == 1 && notes.get(0).getData().equals("test"));
+        NoteBook noteBook = NoteBookProvider.getInstance().getNoteBook();
+        assertTrue("Added note is missing", noteBook.size() == 1 && noteBook.get(0).getData().equals("test"));
     }
 }

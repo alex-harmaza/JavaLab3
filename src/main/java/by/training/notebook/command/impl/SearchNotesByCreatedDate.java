@@ -25,7 +25,7 @@ public class SearchNotesByCreatedDate implements ICommand {
         RequestWithCreatedDate temp = (RequestWithCreatedDate) request;
         List<Note> result = new ArrayList<>();
         Iterator<Note> iterator = NoteBookProvider.getInstance()
-                .getNoteBook().getNoteList().iterator();
+                .getNoteBook().iterator();
 
         while (iterator.hasNext()){
             Note note = iterator.next();
@@ -42,7 +42,7 @@ public class SearchNotesByCreatedDate implements ICommand {
             }
         }
 
-        return new ResponseWithNoteList(true, result);
+        return new ResponseWithNoteArray(true, result.toArray(new Note[result.size()]));
     }
 
 }

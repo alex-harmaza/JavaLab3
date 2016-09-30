@@ -30,12 +30,12 @@ public class SearchNotesByContent extends View {
         if (response.getClass() == ResponseWithMessage.class){
             super.showResponse(response);
         }
-        else if (response.getClass() != ResponseWithNoteList.class){
+        else if (response.getClass() != ResponseWithNoteArray.class){
             throw new ViewException("Incorrect response type");
         }
 
-        ResponseWithNoteList temp = (ResponseWithNoteList) response;
-        if (temp.getNotes().size() == 0){
+        ResponseWithNoteArray temp = (ResponseWithNoteArray) response;
+        if (temp.getNotes().length == 0){
             System.out.println("Result: Nothing");
         }
         else {

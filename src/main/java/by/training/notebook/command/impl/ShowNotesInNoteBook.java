@@ -2,7 +2,9 @@ package by.training.notebook.command.impl;
 
 import by.training.notebook.bean.Request;
 import by.training.notebook.bean.Response;
-import by.training.notebook.bean.ResponseWithNoteList;
+import by.training.notebook.bean.ResponseWithNoteArray;
+import by.training.notebook.bean.entity.Note;
+import by.training.notebook.bean.entity.NoteBook;
 import by.training.notebook.command.ICommand;
 import by.training.notebook.exception.CommandException;
 import by.training.notebook.source.NoteBookProvider;
@@ -17,8 +19,8 @@ public class ShowNotesInNoteBook implements ICommand {
         if (request.getClass() != Request.class){
             throw new CommandException("The request does not Request the class");
         }
-        return new ResponseWithNoteList(true, NoteBookProvider.getInstance()
-                .getNoteBook().getNoteList());
+        NoteBook noteBook = NoteBookProvider.getInstance().getNoteBook();
+        return new ResponseWithNoteArray(true, noteBook.toArray(new Note[noteBook.size()]));
     }
 
 }

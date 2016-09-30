@@ -73,7 +73,7 @@ public class ControllerTest extends Assert {
                 {
                         new RequestWithNoteContent(CommandEnum.SEARCH_BY_CONTENT, "test"),
                         true,
-                        ResponseWithNoteList.class
+                        ResponseWithNoteArray.class
                 },
                 {
                         new RequestWithCreatedDate(CommandEnum.SEARCH_BY_CONTENT, new Date()),
@@ -83,7 +83,7 @@ public class ControllerTest extends Assert {
                 {
                         new RequestWithCreatedDate(CommandEnum.SEARCH_BY_DATE, new Date()),
                         true,
-                        ResponseWithNoteList.class
+                        ResponseWithNoteArray.class
                 },
                 {
                         new RequestWithNoteContent(CommandEnum.SEARCH_BY_DATE, "test"),
@@ -93,7 +93,7 @@ public class ControllerTest extends Assert {
                 {
                         new Request(CommandEnum.SHOW_NOTES),
                         true,
-                        ResponseWithNoteList.class
+                        ResponseWithNoteArray.class
                 },
                 {
                         new RequestWithCreatedDate(CommandEnum.SHOW_NOTES, new Date()),

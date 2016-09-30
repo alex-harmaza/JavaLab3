@@ -39,12 +39,12 @@ public class SearchNotesByCreatedDate extends View {
         if (response.getClass() == ResponseWithMessage.class){
             super.showResponse(response);
         }
-        else if (response.getClass() != ResponseWithNoteList.class){
+        else if (response.getClass() != ResponseWithNoteArray.class){
             throw new ViewException("Incorrect response type");
         }
 
-        ResponseWithNoteList temp = (ResponseWithNoteList) response;
-        System.out.println("Result: " + (temp.getNotes().size() == 0 ? "nothing" : ""));
+        ResponseWithNoteArray temp = (ResponseWithNoteArray) response;
+        System.out.println("Result: " + (temp.getNotes().length == 0 ? "nothing" : ""));
         for (Note note : temp.getNotes()){
             System.out.println(note.toString());
         }

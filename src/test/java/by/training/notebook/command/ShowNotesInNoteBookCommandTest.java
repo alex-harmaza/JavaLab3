@@ -6,9 +6,6 @@ import by.training.notebook.bean.entity.Note;
 import by.training.notebook.command.impl.ShowNotesInNoteBook;
 import by.training.notebook.exception.CommandException;
 import by.training.notebook.source.NoteBookProvider;
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -37,9 +34,9 @@ public class ShowNotesInNoteBookCommandTest extends CommandTest {
         Response response = getCommand().execute(new Request(CommandEnum.SHOW_NOTES));
 
         assertEquals("Incorrect response status", response.isStatus(), true);
-        assertEquals("Incorrect response type", response.getClass(), ResponseWithNoteList.class);
+        assertEquals("Incorrect response type", response.getClass(), ResponseWithNoteArray.class);
 
         assertTrue("Incorrect response note in list",
-                note == ((ResponseWithNoteList) response).getNotes().get(0));
+                note == ((ResponseWithNoteArray) response).getNotes()[0]);
     }
 }

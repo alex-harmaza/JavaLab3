@@ -7,22 +7,22 @@ import java.util.List;
 /**
  * Created by alexh on 27.09.2016.
  */
-public class ResponseWithNoteList extends Response {
+public class ResponseWithNoteArray extends Response {
 
-    private List<Note> notes;
+    private Note[] notes;
 
 
-    public ResponseWithNoteList(boolean status, List<Note> notes){
+    public ResponseWithNoteArray(boolean status, Note[] notes){
         super(status);
         setNotes(notes);
     }
 
 
-    public List<Note> getNotes() {
+    public Note[] getNotes() {
         return notes;
     }
 
-    public void setNotes(List<Note> notes) {
+    public void setNotes(Note[] notes) {
         if (notes == null){
             throw new IllegalArgumentException("Notes is null");
         }

@@ -40,6 +40,6 @@ public class CreateNewNoteBookCommandTest extends CommandTest {
         NoteBook noteBook = NoteBookProvider.getInstance().getNoteBook();
         noteBook.add(new Note(new Date(), "test"));
         getCommand().execute(new Request(CommandEnum.CREATE_NEW_NOTEBOOK));
-        assertTrue("The new notebook is not created", noteBook.getNoteList().size() == 0);
+        assertTrue("The new notebook is not created", noteBook.size() == 0);
     }
 }

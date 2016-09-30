@@ -3,7 +3,7 @@ package by.training.notebook.command.impl;
 import by.training.notebook.bean.Request;
 import by.training.notebook.bean.Response;
 import by.training.notebook.bean.RequestWithNoteContent;
-import by.training.notebook.bean.ResponseWithNoteList;
+import by.training.notebook.bean.ResponseWithNoteArray;
 import by.training.notebook.bean.entity.Note;
 import by.training.notebook.command.ICommand;
 import by.training.notebook.exception.CommandException;
@@ -27,7 +27,7 @@ public class SearchNotesByContent implements ICommand {
         RequestWithNoteContent temp = (RequestWithNoteContent) request;
         List<Note> result = new ArrayList<>();
         Iterator<Note> iterator = NoteBookProvider.getInstance()
-                .getNoteBook().getNoteList().iterator();
+                .getNoteBook().iterator();
 
         while (iterator.hasNext()){
             Note note = iterator.next();
@@ -36,7 +36,7 @@ public class SearchNotesByContent implements ICommand {
             }
         }
 
-        return new ResponseWithNoteList(true, result);
+        return new ResponseWithNoteArray(true, result.toArray(new Note[result.size()]));
     }
 
 }

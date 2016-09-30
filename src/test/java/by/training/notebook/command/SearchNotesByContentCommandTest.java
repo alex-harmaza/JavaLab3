@@ -35,11 +35,11 @@ public class SearchNotesByContentCommandTest extends CommandTest {
                 .execute(new RequestWithNoteContent(CommandEnum.SEARCH_BY_CONTENT, "test"));
 
         assertEquals("Incorrect response status", response.isStatus(), true);
-        assertEquals("Incorrect response type", response.getClass(), ResponseWithNoteList.class);
+        assertEquals("Incorrect response type", response.getClass(), ResponseWithNoteArray.class);
 
-        ResponseWithNoteList temp = (ResponseWithNoteList) response;
+        ResponseWithNoteArray temp = (ResponseWithNoteArray) response;
         assertTrue("Incorrect response note list size",
-                temp.getNotes() != null && temp.getNotes().size() == 1);
-        assertTrue("Incorrect response note", temp.getNotes().get(0) == note);
+                temp.getNotes() != null && temp.getNotes().length == 1);
+        assertTrue("Incorrect response note", temp.getNotes()[0] == note);
     }
 }
