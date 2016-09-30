@@ -20,6 +20,7 @@ public class LoadNoteBookFromFileCommandTest extends CommandTest {
     }
 
 
+    @Override
     @Test(expected = CommandException.class)
     public void checkOnIncorrectRequestType() throws CommandException {
         getCommand().execute(new RequestWithCreatedDate(CommandEnum.LOAD, new Date()));
@@ -38,6 +39,7 @@ public class LoadNoteBookFromFileCommandTest extends CommandTest {
         getCommand().execute(new Request(CommandEnum.LOAD));
     }
 
+    @Override
     @Test()
     public void checkResponse() throws IOException, CommandException {
         FileWriter writer = new FileWriter(ConfigProperties.getInstance().getProperty("file.path"));

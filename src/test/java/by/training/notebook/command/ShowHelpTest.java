@@ -19,11 +19,13 @@ public class ShowHelpTest extends CommandTest {
     }
 
 
+    @Override
     @Test(expected = CommandException.class)
     public void checkOnIncorrectRequestType() throws CommandException {
         getCommand().execute(new RequestWithCreatedDate(CommandEnum.HELP, new Date()));
     }
 
+    @Override
     @Test
     public void checkResponse() throws CommandException, IOException {
         Response response = getCommand().execute(new Request(CommandEnum.HELP));

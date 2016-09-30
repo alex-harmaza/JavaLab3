@@ -23,11 +23,13 @@ public class AddNoteToNoteBookCommandTest extends CommandTest{
     }
 
 
+    @Override
     @Test(expected = CommandException.class)
     public void checkOnIncorrectRequestType() throws CommandException {
         getCommand().execute(new RequestWithCreatedDate(CommandEnum.ADD_NOTE, new Date()));
     }
 
+    @Override
     @Test
     public void checkResponse() throws CommandException {
         Response response = getCommand()
