@@ -13,7 +13,7 @@ import by.training.notebook.source.NoteBookProvider;
 public class CreateNewNotebook implements ICommand {
 
     public Response execute(Request request) throws CommandException {
-        if (request.getClass() != Request.class ){
+        if (request == null || request.getClass() != Request.class ){
             throw new CommandException("Incorrect request class");
         }
         NoteBookProvider.getInstance().getNoteBook().clear();

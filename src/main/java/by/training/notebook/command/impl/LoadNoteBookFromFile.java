@@ -20,7 +20,7 @@ public class LoadNoteBookFromFile implements ICommand {
 
     @Override
     public Response execute(Request request) throws CommandException {
-        if (request.getClass() != Request.class){
+        if (request == null || request.getClass() != Request.class){
             throw new CommandException("The request does not Request the class");
         }
 

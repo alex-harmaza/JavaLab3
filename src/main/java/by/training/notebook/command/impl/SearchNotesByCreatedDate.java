@@ -18,7 +18,7 @@ public class SearchNotesByCreatedDate implements ICommand {
 
     @Override
     public Response execute(Request request) throws CommandException {
-        if (request.getClass() != RequestWithCreatedDate.class){
+        if (request == null || request.getClass() != RequestWithCreatedDate.class){
             throw new CommandException("The request does not RequestWithCreatedDate the class");
         }
 

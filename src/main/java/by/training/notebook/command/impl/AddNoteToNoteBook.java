@@ -18,7 +18,7 @@ public class AddNoteToNoteBook implements ICommand {
 
     @Override
     public Response execute(Request request) throws CommandException {
-        if (request.getClass() != RequestWithNoteContent.class){
+        if (request == null || request.getClass() != RequestWithNoteContent.class){
             throw new CommandException("The request does not AddNoteToNoteBookRequest the class");
         }
 
