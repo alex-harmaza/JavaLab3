@@ -1,5 +1,6 @@
 package by.training.notebook.bean.entity;
 
+import java.text.DateFormat;
 import java.util.Date;
 
 /**
@@ -60,7 +61,9 @@ public class Note {
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder("\n");
-        builder.append("date of creation: ").append(createdDate.toString()).append("\n");
+        builder.append("date of creation: ")
+                .append(DateFormat.getDateTimeInstance().format(createdDate))
+                .append("\n");
         builder.append("content: ").append(data).append("\n");
         return builder.toString();
     }
