@@ -27,21 +27,24 @@ public class SearchNotesByContent extends View {
 
     @Override
     public void showResponse(Response response) throws ViewException {
-        if (response.getClass() == ResponseWithMessage.class){
-            super.showResponse(response);
-        }
-        else if (response.getClass() != ResponseWithNoteArray.class){
+        if (response.getClass() != ResponseWithMessage.class
+                && response.getClass() != ResponseWithNoteArray.class){
             throw new ViewException("Incorrect response type");
         }
 
-        ResponseWithNoteArray temp = (ResponseWithNoteArray) response;
-        if (temp.getNotes().length == 0){
-            System.out.println("Result: Nothing");
+        if (response.getClass() == ResponseWithMessage.class){
+            super.showResponse(response);
         }
         else {
-            System.out.println("Result: ");
-            for (Note note : temp.getNotes()){
-                System.out.println(note.toString());
+            ResponseWithNoteArray temp = (ResponseWithNoteArray) response;
+            if (temp.getNotes().length == 0){
+                System.out.println("Result: Nothing");
+            }
+            else {
+                System.out.println("Result: ");
+                for (Note note : temp.getNotes()){
+                    System.out.println(note.toString());
+                }
             }
         }
     }
